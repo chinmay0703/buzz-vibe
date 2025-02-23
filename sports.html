@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Trending News - Latest Headlines, Breaking Updates</title>
+        <meta name="description" content="Stay updated with the latest trending news, breaking headlines, and live updates from India, Entertainment, Technology and more.">
+        <meta name="keywords" content="Trending News, Latest Headlines, Breaking Updates, India News, Entertainment, Technology, Gen Z News, Live News, Top News">
+        
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Google Fonts: Poppins -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        
+        <style>
+          body {
+            background: linear-gradient(to bottom, #cfe6f3, #a7a7da);
+            font-family: 'Poppins', sans-serif;
+          }
+          .text-xxs { font-size: 0.65rem; }
+          .navbar {
+            background: linear-gradient(90deg, #4f46e5, #2563eb);
+          }
+          /* 🔹 Skeleton Loader Animation */
+          .skeleton {
+            background: linear-gradient(90deg, #e3e3e3 25%, #f6f6f6 50%, #e3e3e3 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+          }
+          @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+          }
+        </style>
+    </head>
+    
+<body class="bg-gray-900">
+
+    <!-- 🔵 Navbar -->
+    <nav class="bg-gradient-to-r from-purple-700 to-blue-900 text-white py-4 px-6 flex justify-between items-center shadow-md">
+        <a href="#" class="text-xl font-bold tracking-wide">🚀 Latest News</a>
+        <ul class="hidden md:flex space-x-6 text-sm">
+            <li><a href="/  " class="hover:text-gray-300 transition">🏠 Home</a></li>
+            <li><a href="sports.html" class="hover:text-gray-300 transition">⚽ Sports</a></li>
+        </ul>
+        <button class="md:hidden block text-white text-2xl focus:outline-none" id="menu-toggle">☰</button>
+    </nav>
+
+    <!-- 🔵 Mobile Menu -->
+    <div class="hidden md:hidden bg-gradient-to-r from-purple-700 to-blue-900 text-white text-center p-3" id="mobile-menu">
+        <a href="#" class="block py-2">🏠 Home</a>
+        <a href="#" class="block py-2">🗳 Politics</a>
+        <a href="#" class="block py-2">💻 Tech</a>
+        <a href="#" class="block py-2">💰 Business</a>
+        <a href="#" class="block py-2">⚽ Sports</a>
+    </div>
+
+    <!-- 🔵 News Section -->
+    <div class="container mx-auto p-6">
+        <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+            <!-- 🔹 Skeleton Loaders -->
+            <div class="bg-white p-6 rounded-lg shadow-md skeleton h-80"></div>
+            <div class="bg-white p-6 rounded-lg shadow-md skeleton h-80"></div>
+            <div class="bg-white p-6 rounded-lg shadow-md skeleton h-80"></div>
+        </div>
+    </div>
+
+    <!-- 🔵 Footer -->
+    <footer class="bg-gradient-to-r from-purple-700 to-blue-900 text-white text-center p-4 mt-10 shadow-lg">
+        <p>© 2025 Latest News  | Designed for Showing Latest News  🚀</p>
+    </footer>
+
+    <script>
+        // Toggle Mobile Menu
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            const menu = document.getElementById("mobile-menu");
+            menu.classList.toggle("hidden");
+        });
+
+        // Fetch News Data from Localhost Server
+        async function fetchNews() {
+            try {
+                const response = await fetch("https://server-ruddy-chi-90.vercel.app/news-sports");
+                const newsData = await response.json();
+                console.log(newsData, "Fetched News");
+
+                const newsContainer = document.getElementById('news-container');
+                
+                // Remove skeleton loaders
+                newsContainer.innerHTML = "";
+
+                newsData.news.news.forEach(news => {
+                    const newsCard = document.createElement('div');
+                    newsCard.classList.add(
+                        'bg-white', 'p-6', 'rounded-lg', 'shadow-md', 'hover:shadow-xl', 
+                        'transition', 'duration-300', 'transform', 'hover:-translate-y-2',
+                        'text-black'
+                    );
+
+                    newsCard.innerHTML = `
+                        <img src="${news.image}" alt="${news.title}" class=" w-full h-48 object-cover rounded-xl shadow-md">
+                        <div class="mt-4">
+                            <h3 class="text-lg font-semibold">
+                                <a href="${news.link}" target="_blank" class="text-black-700 hover:underline">${news.title}</a>
+                            </h3>
+                            
+                        </div>
+                    `;
+
+                    newsContainer.appendChild(newsCard);
+                });
+            } catch (error) {
+                console.error("Error fetching news:", error);
+            }
+        }
+
+        // Load news after a delay to simulate loading
+        setTimeout(fetchNews, 2000);
+    </script>
+
+</body>
+</html>
