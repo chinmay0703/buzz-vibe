@@ -1,169 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trending News - Latest Headlines, Breaking Updates</title>
-  <meta name="description" content="Stay updated with the latest trending news, breaking headlines, and live updates from India, Entertainment, Technology and more.">
-  <meta name="keywords" content="Trending News, Latest Headlines, Breaking Updates, India News, Entertainment, Technology, Gen Z News, Live News, Top News">
-    <link rel="icon" type="image/png" href="data:image/jpeg;base64,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">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Trending News - Latest Headlines, Breaking Updates</title>
+        <meta name="description" content="Stay updated with the latest trending news, breaking headlines, and live updates from India, Entertainment, Technology and more.">
+        <meta name="keywords" content="Trending News, Latest Headlines, Breaking Updates, India News, Entertainment, Technology, Gen Z News, Live News, Top News">
+        <link rel="icon" type="image/png" href="data:image/jpeg;base64,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">
+        
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Google Fonts: Poppins -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+          body {
+            background: linear-gradient(to bottom, #cfe6f3, #a7a7da);
+            font-family: 'Poppins', sans-serif;
+          }
+          .text-xxs { font-size: 0.65rem; }
+          /* Attractive navbar with linear gradient */
+          .navbar {
+            background: linear-gradient(90deg, #4f46e5, #2563eb);
+          }
+        </style>
+      </head>
+<body class="bg-gray-900">
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GG0N5ETF9M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- 🔵 Navbar -->
+    <nav class="bg-gradient-to-r from-purple-700 to-blue-900 text-white py-4 px-6 flex justify-between items-center shadow-md">
+        <a href="#" class="text-xl font-bold tracking-wide">🚀 Latest News</a>
+        <ul class="hidden md:flex space-x-6 text-sm">
+            <li><a href="#" class="hover:text-gray-300 transition">🏠 Home</a></li>
+            <li><a href="#" class="hover:text-gray-300 transition">🗳 Politics</a></li>
+            <li><a href="#" class="hover:text-gray-300 transition">💻 Tech</a></li>
+            <li><a href="#" class="hover:text-gray-300 transition">💰 Business</a></li>
+            <li><a href="#" class="hover:text-gray-300 transition">⚽ Sports</a></li>
+        </ul>
+        <button class="md:hidden block text-white text-2xl focus:outline-none" id="menu-toggle">☰</button>
+    </nav>
 
-  gtag('config', 'G-GG0N5ETF9M');
-</script>
-  <style>
-    body {
-      background: linear-gradient(to bottom, #f7f7f7, #ffffff);
-      font-family: 'Poppins', sans-serif;
-    }
-    .text-xxs { font-size: 0.65rem; }
-    /* Attractive navbar with linear gradient */
-    .navbar {
-      background: linear-gradient(90deg, #4f46e5, #2563eb);
-    }
-  </style>
-</head>
-<body class="min-h-screen">
-
-  <!-- Navbar -->
-  <nav class="navbar fixed top-0 z-50 w-full shadow-md p-4">
-    <div class="container mx-auto flex items-center justify-between">
-      <a href="/" class="text-2xl font-bold text-white">Trending News</a>
-      <div class="hidden md:flex space-x-6">
-        <a href="/" class="text-white hover:text-gray-200 text-lg">Home</a>
-      </div>
-      <!-- Mobile menu toggle -->
-      <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-            d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+    <!-- 🔵 Mobile Menu -->
+    <div class="hidden md:hidden bg-gradient-to-r from-purple-700 to-blue-900 text-white text-center p-3" id="mobile-menu">
+        <a href="#" class="block py-2">🏠 Home</a>
+        <a href="#" class="block py-2">🗳 Politics</a>
+        <a href="#" class="block py-2">💻 Tech</a>
+        <a href="#" class="block py-2">💰 Business</a>
+        <a href="#" class="block py-2">⚽ Sports</a>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden mt-2">
-      <a href="/" class="block px-4 py-2 text-white hover:bg-blue-600">Home</a>
-      <a href="/blogs.html" class="block px-4 py-2 text-white hover:bg-blue-600">Latest News</a>
-      <a href="/contact.html" class="block px-4 py-2 text-white hover:bg-blue-600">Contact</a>
+
+    <!-- 🔵 News Section -->
+    <div class="container mx-auto p-6">
+        <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6"></div>
     </div>
-  </nav>
 
-  <!-- Main Content -->
-  <main class="pt-24 container mx-auto px-4 md:px-8">
-    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Top Headlines</h1>
+    <!-- 🔵 Footer -->
+    <footer class="bg-gradient-to-r from-purple-700 to-blue-900 text-white text-center p-4 mt-10 shadow-lg">
+        <p>© 2025 NDTV News Clone | Designed for educational purposes 🚀</p>
+    </footer>
 
-    <!-- 3-Column Grid -->
-    <div class="grid rounded-xl grid-cols-1 md:grid-cols-3 gap-6 mb-20" id="category-grid">
-      <!-- Column 1: India -->
-      <div class="bg-white p-4 rounded-md shadow-sm">
-        <h2 class="text-xl font-bold mb-3 border-b pb-2 text-blue-600">India</h2>
-        <div id="col-india"></div>
-      </div>
-      <!-- Column 2: Entertainment -->
-      <div class="bg-white p-4 rounded-md shadow-sm">
-        <h2 class="text-xl font-bold mb-3 border-b pb-2 text-pink-600">Entertainment</h2>
-        <div id="col-entertainment"></div>
-      </div>
-      <!-- Column 3: Technology -->
-      <div class="bg-white p-4 rounded-md shadow-sm">
-        <h2 class="text-xl font-bold mb-3 border-b pb-2 text-green-600">Technology</h2>
-        <div id="col-technology"></div>
-      </div>
-    </div>
-  </main>
+    <script>
+        // Toggle Mobile Menu
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            const menu = document.getElementById("mobile-menu");
+            menu.classList.toggle("hidden");
+        });
 
-  <script>
-    // Mobile Menu Toggle
-    document.getElementById("mobile-menu-toggle").addEventListener("click", () => {
-      document.getElementById("mobile-menu").classList.toggle("hidden");
-    });
+        // Fetch News Data from Localhost Server
+        async function fetchNews() {
+            try {
+                const response = await fetch("https://server-ruddy-chi-90.vercel.app/news");
+                const newsData = await response.json();
+                console.log(newsData, "Fetched News");
 
-    // Fetch trending news data
-    fetch("https://server-ruddy-chi-90.vercel.app/top-indian-trending-keywords")
-      .then(response => response.json())
-      .then(data => {
-        const days = data?.default?.trendingSearchesDays;
-        if (!Array.isArray(days)) {
-          console.error("No trendingSearchesDays array found in response", data);
-          return;
+                const newsContainer = document.getElementById('news-container');
+
+                newsData.news.forEach(news => {
+                    const newsCard = document.createElement('div');
+                    newsCard.classList.add(
+                        'bg-white', 'p-6', 'rounded-lg', 'shadow-md', 'hover:shadow-xl', 
+                        'transition', 'duration-300', 'transform', 'hover:-translate-y-2',
+                        'text-black'
+                    );
+
+                    newsCard.innerHTML = `
+                        <img src="${news.image}" alt="${news.title}" class=" w-full h-48 object-cover rounded-xl shadow-md">
+                        <div class="mt-4">
+                            <h3 class="text-lg font-semibold">
+                                <a href="${news.link}" target="_blank" class="text-black-700 hover:underline">${news.title}</a>
+                            </h3>
+                            <div class="flex items-start flex-col justify-start items-start mt-3">
+                                <p class="bg-gradient-to-r from-purple-600 to-blue-700 text-white text-xs  px-3 py-1 rounded-full">
+                                    ${news.timestamp || 'N/A'}
+                                </p>
+                                <p class="bg-gray-800 text-white text-xs  mt-2 px-3 py-1 rounded-full">
+                                    ${news.author || 'Unknown'}
+                                </p>
+                            </div>
+                            <p class="text-gray-600 text-sm mt-3">${news.description || ''}</p>
+                        </div>
+                    `;
+
+                    newsContainer.appendChild(newsCard);
+                });
+            } catch (error) {
+                console.error("Error fetching news:", error);
+            }
         }
-        
-        let allTrending = [];
-        // Attach date info to each item and combine all trending items
-        days.forEach(dayObj => {
-          if (Array.isArray(dayObj.trendingSearches)) {
-            dayObj.trendingSearches.forEach(item => {
-              item._newsDate = dayObj.formattedDate || dayObj.date;
-            });
-            allTrending = [...allTrending, ...dayObj.trendingSearches];
-          }
-        });
-        
-        // Distribute items into columns (0: India, 1: Entertainment, 2: Technology)
-        allTrending.forEach((item, idx) => {
-          const colId = (idx % 3 === 0) ? "col-india" : (idx % 3 === 1) ? "col-entertainment" : "col-technology";
-          
-          // Create card container with a horizontal line separator
-          const card = document.createElement("div");
-          card.className = "flex items-start space-x-3 border-b border-gray-200 pb-4 mb-4";
 
-          // Image element
-          const imageUrl = item?.image?.imageUrl || item?.image?.newsUrl || "";
-          if (imageUrl) {
-            const imgEl = document.createElement("img");
-            imgEl.src = imageUrl;
-            imgEl.alt = item?.title?.query || "Untitled";
-            imgEl.className = "w-16 h-16 object-cover rounded";
-            card.appendChild(imgEl);
-          }
+        fetchNews();
+    </script>
 
-          // Text container
-          const textDiv = document.createElement("div");
-          textDiv.className = "flex-1";
-
-          // Title
-          const titleEl = document.createElement("h3");
-          titleEl.className = "text-sm font-semibold text-gray-800";
-          titleEl.textContent = item?.title?.query || "No Title";
-          textDiv.appendChild(titleEl);
-
-          // Source & Date
-          const metaEl = document.createElement("p");
-          const source = item?.image?.source || "Unknown Source";
-          metaEl.className = "text-xs text-gray-500 mt-1";
-          metaEl.textContent = `${source} • ${item._newsDate}`;
-          textDiv.appendChild(metaEl);
-
-          // Snippet
-          const snippet = item?.articles?.[0]?.snippet || `Traffic: ${item.formattedTraffic || 'N/A'}`;
-          const snippetEl = document.createElement("p");
-          snippetEl.className = "text-xs text-gray-600 mt-1";
-          snippetEl.textContent = snippet;
-          textDiv.appendChild(snippetEl);
-
-          // "Read More" link
-          const newsUrl = item?.image?.newsUrl || "#";
-          const linkEl = document.createElement("a");
-          linkEl.href = newsUrl;
-          linkEl.target = "_blank";
-          linkEl.className = "text-blue-600 text-xxs mt-2 inline-block hover:underline";
-          linkEl.textContent = "Read More";
-          textDiv.appendChild(linkEl);
-
-          card.appendChild(textDiv);
-          document.getElementById(colId).appendChild(card);
-        });
-      })
-      .catch(err => console.error("Error fetching data:", err));
-  </script>
 </body>
 </html>
