@@ -25,7 +25,7 @@
           .skeleton {
             background: linear-gradient(90deg, #e3e3e3 25%, #f6f6f6 50%, #e3e3e3 75%);
             background-size: 200% 100%;
-            animation: shimmer 1.5s infinite linear;
+            animation: shimmer 0.5s infinite linear;
           }
           @keyframes shimmer {
             0% { background-position: -200% 0; }
@@ -115,7 +115,7 @@
         }
 
         // Load news after a delay to simulate loading
-        setTimeout(fetchNews, 2000);
+        fetchNews();
     </script>
 
 </body>
