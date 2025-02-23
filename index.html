@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trending News - Latest Headlines, Breaking Updates</title>
+  <meta name="description" content="Stay updated with the latest trending news, breaking headlines, and live updates from India, Entertainment, Technology and more.">
+  <meta name="keywords" content="Trending News, Latest Headlines, Breaking Updates, India News, Entertainment, Technology, Gen Z News, Live News, Top News">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+      font-family: 'Poppins', sans-serif;
+    }
+    .text-xxs { font-size: 0.65rem; }
+    /* Attractive navbar with linear gradient */
+    .navbar {
+      background: linear-gradient(90deg, #4f46e5, #2563eb);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="navbar fixed top-0 z-50 w-full shadow-md p-4">
+    <div class="container mx-auto flex items-center justify-between">
+      <a href="/" class="text-2xl font-bold text-white">Trending News</a>
+      <div class="hidden md:flex space-x-6">
+        <a href="/" class="text-white hover:text-gray-200 text-lg">Home</a>
+      </div>
+      <!-- Mobile menu toggle -->
+      <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden mt-2">
+      <a href="/" class="block px-4 py-2 text-white hover:bg-blue-600">Home</a>
+      <a href="/blogs.html" class="block px-4 py-2 text-white hover:bg-blue-600">Latest News</a>
+      <a href="/contact.html" class="block px-4 py-2 text-white hover:bg-blue-600">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pt-24 container mx-auto px-4 md:px-8">
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Top Headlines</h1>
+
+    <!-- 3-Column Grid -->
+    <div class="grid rounded-xl grid-cols-1 md:grid-cols-3 gap-6 mb-20" id="category-grid">
+      <!-- Column 1: India -->
+      <div class="bg-white p-4 rounded-md shadow-sm">
+        <h2 class="text-xl font-bold mb-3 border-b pb-2 text-blue-600">India</h2>
+        <div id="col-india"></div>
+      </div>
+      <!-- Column 2: Entertainment -->
+      <div class="bg-white p-4 rounded-md shadow-sm">
+        <h2 class="text-xl font-bold mb-3 border-b pb-2 text-pink-600">Entertainment</h2>
+        <div id="col-entertainment"></div>
+      </div>
+      <!-- Column 3: Technology -->
+      <div class="bg-white p-4 rounded-md shadow-sm">
+        <h2 class="text-xl font-bold mb-3 border-b pb-2 text-green-600">Technology</h2>
+        <div id="col-technology"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById("mobile-menu-toggle").addEventListener("click", () => {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+    });
+
+    // Fetch trending news data
+    fetch("https://server-ruddy-chi-90.vercel.app/top-indian-trending-keywords")
+      .then(response => response.json())
+      .then(data => {
+        const days = data?.default?.trendingSearchesDays;
+        if (!Array.isArray(days)) {
+          console.error("No trendingSearchesDays array found in response", data);
+          return;
+        }
+        
+        let allTrending = [];
+        // Attach date info to each item and combine all trending items
+        days.forEach(dayObj => {
+          if (Array.isArray(dayObj.trendingSearches)) {
+            dayObj.trendingSearches.forEach(item => {
+              item._newsDate = dayObj.formattedDate || dayObj.date;
+            });
+            allTrending = [...allTrending, ...dayObj.trendingSearches];
+          }
+        });
+        
+        // Distribute items into columns (0: India, 1: Entertainment, 2: Technology)
+        allTrending.forEach((item, idx) => {
+          const colId = (idx % 3 === 0) ? "col-india" : (idx % 3 === 1) ? "col-entertainment" : "col-technology";
+          
+          // Create card container with a horizontal line separator
+          const card = document.createElement("div");
+          card.className = "flex items-start space-x-3 border-b border-gray-200 pb-4 mb-4";
+
+          // Image element
+          const imageUrl = item?.image?.imageUrl || item?.image?.newsUrl || "";
+          if (imageUrl) {
+            const imgEl = document.createElement("img");
+            imgEl.src = imageUrl;
+            imgEl.alt = item?.title?.query || "Untitled";
+            imgEl.className = "w-16 h-16 object-cover rounded";
+            card.appendChild(imgEl);
+          }
+
+          // Text container
+          const textDiv = document.createElement("div");
+          textDiv.className = "flex-1";
+
+          // Title
+          const titleEl = document.createElement("h3");
+          titleEl.className = "text-sm font-semibold text-gray-800";
+          titleEl.textContent = item?.title?.query || "No Title";
+          textDiv.appendChild(titleEl);
+
+          // Source & Date
+          const metaEl = document.createElement("p");
+          const source = item?.image?.source || "Unknown Source";
+          metaEl.className = "text-xs text-gray-500 mt-1";
+          metaEl.textContent = `${source} • ${item._newsDate}`;
+          textDiv.appendChild(metaEl);
+
+          // Snippet
+          const snippet = item?.articles?.[0]?.snippet || `Traffic: ${item.formattedTraffic || 'N/A'}`;
+          const snippetEl = document.createElement("p");
+          snippetEl.className = "text-xs text-gray-600 mt-1";
+          snippetEl.textContent = snippet;
+          textDiv.appendChild(snippetEl);
+
+          // "Read More" link
+          const newsUrl = item?.image?.newsUrl || "#";
+          const linkEl = document.createElement("a");
+          linkEl.href = newsUrl;
+          linkEl.target = "_blank";
+          linkEl.className = "text-blue-600 text-xxs mt-2 inline-block hover:underline";
+          linkEl.textContent = "Read More";
+          textDiv.appendChild(linkEl);
+
+          card.appendChild(textDiv);
+          document.getElementById(colId).appendChild(card);
+        });
+      })
+      .catch(err => console.error("Error fetching data:", err));
+  </script>
+</body>
+</html>
